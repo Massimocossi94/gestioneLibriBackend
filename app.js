@@ -5,7 +5,7 @@ var helmet = require('helmet');
 const sequelize = require('./utils/database');
 
 const app = express();
-
+app.use('/', bookRoutes);
 app.use(bodyParser.json());
 console.log(process.env.NODE_ENV || 'develop');
 app.use(helmet());
@@ -15,7 +15,7 @@ app.use((req,res,next) => {
     res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
     next();
 });
-app.use('/', bookRoutes);
+
 
 sequelize.authenticate().then( rec => {
     console.log('Connessione stabilita con successo al DB');
