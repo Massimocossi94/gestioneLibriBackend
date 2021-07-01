@@ -1,7 +1,6 @@
 {
     "env": {
         "NODE_ENV" : "dev",
-        "NODE_PORT" : "8080",
         "NODE_DATABASE" : "Libreria",
         "NODE_USER" : "root",
         "NODE_PW" : "root",
