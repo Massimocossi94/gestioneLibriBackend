@@ -14,9 +14,9 @@ module.exports = pool.promise();
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize (
-    'Libreria',
-    'root',
-    'root',
+    process.env.NODE_DATABASE,
+    process.env.NODE_USER,
+    process.env.NODE_PW,
     {
         dialect : 'mysql',
         host : 'localhost'
