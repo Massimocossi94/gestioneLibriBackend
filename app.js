@@ -20,7 +20,7 @@ app.use('/', bookRoutes);
 sequelize.authenticate().then( rec => {
     console.log('Connessione stabilita con successo al DB');
     sequelize.sync().then((result) =>{
-        app.listen(process.env.NODE_PORT || 8080);
+        app.listen(process.env.PORT || 8080);
     }).catch( err => {
         console.log('Sync al DB error:',err);
         }

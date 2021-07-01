@@ -4,6 +4,7 @@
         "NODE_PORT" : "8080",
         "NODE_DATABASE" : "Libreria",
         "NODE_USER" : "root",
-        "NODE_PW" : "root"
+        "NODE_PW" : "root",
+        "NODE_DATABASE_URL" : "localhost"
     }
 }
