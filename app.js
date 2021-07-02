@@ -1,10 +1,9 @@
 const express = require ('express');
-
 const bodyParser = require('body-parser');
 const bookRoutes = require ('./routes/books');
-app.use('/', bookRoutes);
 var helmet = require('helmet');
 const sequelize = require('./utils/database');
+app.use('/', bookRoutes);
 const app = express();
 app.use(bodyParser.json());
 console.log(process.env.NODE_ENV || 'develop');
