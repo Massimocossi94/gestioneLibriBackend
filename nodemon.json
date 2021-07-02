@@ -1,6 +1,6 @@
 {
     "env": {
-        "NODE_ENV" : "production",
+        "NODE_ENV" : "dev",
         "NODE_DATABASE" : "Libreria",
         "NODE_USER" : "root",
         "NODE_PW" : "root",
