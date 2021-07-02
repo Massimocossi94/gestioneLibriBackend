@@ -1,13 +1,14 @@
 const express = require ('express');
+
 const bodyParser = require('body-parser');
 const bookRoutes = require ('./routes/books');
+app.use('/', bookRoutes);
 var helmet = require('helmet');
 const sequelize = require('./utils/database');
-
 const app = express();
-app.use('/', bookRoutes);
 app.use(bodyParser.json());
 console.log(process.env.NODE_ENV || 'develop');
+
 app.use(helmet());
 app.use((req,res,next) => {
     res.setHeader('Access-Control-Allow-Origin','*');
