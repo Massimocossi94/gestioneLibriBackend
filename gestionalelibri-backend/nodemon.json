@@ -1,9 +1,0 @@
-{
-    "env": {
-        "NODE_ENV" : "dev",
-        "NODE_DATABASE" : "Libreria",
-        "NODE_USER" : "root",
-        "NODE_PW" : "root",
-        "NODE_DATABASE_URL" : "localhost"
-    }
-}
