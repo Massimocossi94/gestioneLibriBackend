@@ -23,7 +23,13 @@ exports.getBooks = (req, res, next) => {
 
 //POST DEL LIBRO
 exports.createBook = (req, res, next) => {
-  
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+      return res.status(422).json({
+        message : 'Errore input',
+        error : errors.array()
+      });
+    }
     const titolo = req.body.titolo;
     const autori = req.body.autori;
     const trama = req.body.trama;
