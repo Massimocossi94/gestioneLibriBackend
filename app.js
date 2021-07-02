@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const bookRoutes = require ('./routes/books');
 var helmet = require('helmet');
 const sequelize = require('./utils/database');
-app.use('/', bookRoutes);
+
 const app = express();
+app.use('/', bookRoutes);
 app.use(bodyParser.json());
 console.log(process.env.NODE_ENV || 'develop');
-
 app.use(helmet());
 app.use((req,res,next) => {
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -29,7 +29,6 @@ sequelize.authenticate().then( rec => {
     console.log('Connessione al DB error:',err);
     }
 );
-
 
 
 
