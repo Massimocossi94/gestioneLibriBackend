@@ -29,7 +29,7 @@ sequelize.authenticate().then( rec => {
     console.log('Connessione al DB error:',err);
     }
 );
-app.listen(process.env.PORT || 8080);
+
 
 
 
