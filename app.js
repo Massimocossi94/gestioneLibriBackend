@@ -2,9 +2,14 @@ const express = require ('express');
 const bodyParser = require('body-parser');
 const bookRoutes = require ('./routes/books');
 var helmet = require('helmet');
+var cors = require('cors')
 const sequelize = require('./utils/database');
 
 const app = express();
+app.use(cors());
+app.get('/products/:id', function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for all origins!'})
+  });
 app.use('/', bookRoutes);
 app.use(bodyParser.json());
 console.log(process.env.NODE_ENV || 'develop');
