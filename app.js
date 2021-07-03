@@ -4,7 +4,6 @@ const bookRoutes = require ('./routes/books');
 var helmet = require('helmet');
 var cors = require('cors')
 const sequelize = require('./utils/database');
-
 const app = express();
 app.use(cors());
 app.get('/products/:id', function (req, res, next) {
@@ -25,7 +24,9 @@ app.use((req,res,next) => {
 sequelize.authenticate().then( rec => {
     console.log('Connessione stabilita con successo al DB');
     sequelize.sync().then((result) =>{
-        app.listen(process.env.PORT || 8080);
+        app.listen((process.env.PORT || 8080),function () {
+            console.log('CORS-enabled web server listening on port 80')
+          });
     }).catch( err => {
         console.log('Sync al DB error:',err);
         }
