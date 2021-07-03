@@ -25,7 +25,7 @@ sequelize.authenticate().then( rec => {
     console.log('Connessione stabilita con successo al DB');
     sequelize.sync().then((result) =>{
         app.listen((process.env.PORT || 8080),function () {
-            console.log('CORS-enabled web server listening on port 80')
+            console.log('CORS-enabled web server listening on port '+ process.env.PORT)
           });
     }).catch( err => {
         console.log('Sync al DB error:',err);
