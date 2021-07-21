@@ -1,28 +1,39 @@
 const express = require('express');
 const { body } = require('express-validator/check');
-
 const router = express.Router();
+const bookController = require('../controllers/books');
 
-const feedController = require('../controllers/books');
+const isAuth = require ('../middleware/is-auth');
 
-//NO AUTH | AUTH
-//GET ALL /feed/book
-router.get('/book', feedController.getBooks);
-//GET /feed/book/:id
-router.get('/book/:id', feedController.getBook);
-router.post('/book/:id', feedController.updateBook);
-//POST /feed/book
-router.post('/book',
+
+//POST /book/creazione libro
+router.post('/book',isAuth,
     [
         body('titolo').trim()
         .isLength({ min : 3}).withMessage('Titolo Maggiore di 3 caratteri')
-        .exists().withMessage('Il Titolo è richiesto'),
-        body('autori').trim()
-        .isLength({ min : 5}).withMessage('Autori Maggiore di 5 caratteri'),
+        .exists().withMessage('Il Titolo è richiesto')
     ]
-,feedController.createBook);
+,bookController.createBook);
 
-//DELETE /feed/post
-router.delete('/book/:id', feedController.deleteBook);
+
+//GET ALL/book
+router.get('/book', bookController.getBooks);
+
+
+//GET ALL/book/forME
+router.get('/book/user/me',isAuth, bookController.getBooksByMe);
+
+
+//GET /book/:id
+router.get('/book/:id', bookController.getBook);
+
+
+//MODIFICA/book
+router.post('/book/:id',isAuth, bookController.updateBook);
+
+
+//DELETE/book
+router.delete('/book/:id',isAuth, bookController.deleteBook);
+
 
 module.exports = router;
