@@ -11,7 +11,8 @@ router.post('/book',isAuth,
     [
         body('titolo').trim()
         .isLength({ min : 3}).withMessage('Titolo Maggiore di 3 caratteri')
-        .exists().withMessage('Il Titolo è richiesto')
+        .exists().withMessage('Il Titolo è richiesto'),
+        body('tipologia').trim().not().isEmpty().withMessage('tipologia non vuota')
     ]
 ,bookController.createBook);
 
